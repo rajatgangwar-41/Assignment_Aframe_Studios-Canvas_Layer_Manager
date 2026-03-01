@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import type { Shape, ShapeType, ColorType, SizeType, PositionType } from './types';
+import { COLOR_MAP, SIZE_MAP } from './constants';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [shapes, setShapes] = useState<Shape[]>([]);
+  const [selectedShape, setSelectedShape] = useState<ShapeType>('Square');
+  const [selectedColor, setSelectedColor] = useState<ColorType>('Red');
+  const [selectedSize, setSelectedSize] = useState<SizeType>('400x400');
+  const [selectedPosition, setSelectedPosition] = useState<PositionType>('Top Left');
+
+  const addShape = () => {
+    const newShape: Shape = {
+      id: `${Date.now()}-${Math.random()}`,
+      type: selectedShape,
+      color: COLOR_MAP[selectedColor],
+      size: SIZE_MAP[selectedSize],
+      position: selectedPosition
+    };
+
+    setShapes([newShape, ...shapes]);
+  };
+
+  const deleteShape = (id: string) => {
+    setShapes(shapes.filter(shape => shape.id !== id));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-100" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' }}>
+      <div className="flex h-screen">
+      {/* To Be Done 
+        <ControlPanel />
+      */}
 
-export default App
+        <div className="flex-1 bg-white flex items-center justify-center p-8">
+          {/* <Canvas shapes={shapes} /> */}
+          {/* To Be Done
+            <Canvas /> 
+          */}
+        </div>
+
+        {/*  To Be Done
+            <LayersPanel  /> 
+       */}
+      </div>
+    </div>
+  );
+};
+
+export default App;
