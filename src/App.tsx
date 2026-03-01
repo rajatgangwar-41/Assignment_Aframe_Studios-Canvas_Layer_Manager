@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ControlPanel from './components/ControlPanel';
 import type { Shape, ShapeType, ColorType, SizeType, PositionType } from './types';
 import { COLOR_MAP, SIZE_MAP } from './constants';
 
@@ -28,9 +29,17 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' }}>
       <div className="flex h-screen">
-      {/* To Be Done 
-        <ControlPanel />
-      */}
+        <ControlPanel
+          selectedShape={selectedShape}
+          setSelectedShape={setSelectedShape}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+          selectedSize={selectedSize}
+          setSelectedSize={setSelectedSize}
+          selectedPosition={selectedPosition}
+          setSelectedPosition={setSelectedPosition}
+          onAddShape={addShape}
+        />
 
         <div className="flex-1 bg-white flex items-center justify-center p-8">
           {/* <Canvas shapes={shapes} /> */}
