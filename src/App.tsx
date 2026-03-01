@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ControlPanel from './components/ControlPanel';
+import LayersPanel from './components/LayersPanel';
 import type { Shape, ShapeType, ColorType, SizeType, PositionType } from './types';
 import { COLOR_MAP, SIZE_MAP } from './constants';
 
@@ -48,9 +49,7 @@ const App: React.FC = () => {
           */}
         </div>
 
-        {/*  To Be Done
-            <LayersPanel  /> 
-       */}
+        <LayersPanel shapes={shapes} onDeleteShape={deleteShape} />
       </div>
     </div>
   );
