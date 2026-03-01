@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Canvas from './components/Canvas';
 import ControlPanel from './components/ControlPanel';
 import LayersPanel from './components/LayersPanel';
 import type { Shape, ShapeType, ColorType, SizeType, PositionType } from './types';
@@ -43,10 +44,7 @@ const App: React.FC = () => {
         />
 
         <div className="flex-1 bg-white flex items-center justify-center p-8">
-          {/* <Canvas shapes={shapes} /> */}
-          {/* To Be Done
-            <Canvas /> 
-          */}
+          <Canvas shapes={shapes} />
         </div>
 
         <LayersPanel shapes={shapes} onDeleteShape={deleteShape} />
